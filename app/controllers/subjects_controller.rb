@@ -9,4 +9,9 @@ class SubjectsController < ApplicationController
     questions = Subject.find(params[:id]).questions
     render json: questions, only: [:id, :question, :answer, :subject_id]
   end
+
+  def create
+    subject = Subject.find_or_create_by(name: params[:name]);
+    render json: subject
+  end
 end
